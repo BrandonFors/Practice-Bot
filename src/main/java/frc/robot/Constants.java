@@ -15,10 +15,19 @@ package frc.robot;
 public final class Constants {
   public final int JoystickChannel = 0;
 
-  public final int FrontRightMotorChannel = 2;
-  public final int FrontLeftMotorChannel = 4;
-  public final int BackRightMotorChannel = 0;
-  public final int BackLeftMotorChannel = 0;
+  public static int FrontRightMotorChannel = 2;
+  public static int FrontLeftMotorChannel = 4;
+  public static int BackRightMotorChannel = 0;
+  public static int BackLeftMotorChannel = 0;
+
+
+  
+
+
+  public static int fwdSolChannel = 0;
+  public static int revSolChannel = 1;
+
+
 
   
 

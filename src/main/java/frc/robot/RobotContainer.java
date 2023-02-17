@@ -6,13 +6,16 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
+import frc.robot.commands.BalanceRobotCom;
 import frc.robot.commands.DriveCom;
+import frc.robot.commands.TeleDriveCom;
 import frc.robot.subsystems.DriveTrainSub;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import java.util.function.Supplier;
 
@@ -38,9 +41,9 @@ public class RobotContainer {
 
     SmartDashboard.putData("Auto Choices", m_chooser);
 
-    m_DriveTrainSub.setDefaultCommand(new DriveCom(m_DriveTrainSub, ()-> driveStick.getRawAxis(1)*0.25, ()-> stick.getRawAxis(2)*0.25));
+    m_DriveTrainSub.setDefaultCommand(new TeleDriveCom(m_DriveTrainSub, ()-> stick.getRawAxis(1)*0.5, ()-> stick.getRawAxis(0)*0.5));
 
-    configureBindings();
+    configureBindings();  
   }
 
   /**
@@ -53,7 +56,7 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    
+    new JoystickButton(stick, 1).whileTrue(new BalanceRobotCom(m_DriveTrainSub,0));
 
     // m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
   }
